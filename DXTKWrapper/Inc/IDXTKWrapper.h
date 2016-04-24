@@ -27,9 +27,9 @@ namespace DXTKWrapper
 
 		virtual void DrawBorder(float Xa, float Ya, float Width, float Height, Color Color) = 0;
 
-		virtual void DrawRectangle(float x, float y, float width, float height, Color RecFarbe) = 0;
+		virtual void DrawRectangle(float x, float y, float width, float height, Color rectangleColor) = 0;
 
-		virtual void DrawBox(float x, float y, float w, float h, Color BoxColor, Color BorderColor) = 0;
+		virtual void DrawBox(float x, float y, float w, float h, Color BoxColor, Color borderColor) = 0;
 
 		virtual void DrawBoxGradient(float x, float y, float w, float h, Color BoxColor, Color EndColor, Color BorderColor, E_DX_GRADIENT_ORIENTATION orientation) = 0;
 
@@ -41,14 +41,14 @@ namespace DXTKWrapper
 
 		virtual void DrawCrosshair(float size = 12, Color Color = Colors::Red.v) = 0;
 
-		virtual float retScreenWidth() = 0;
+		virtual float GetScreenWidth() = 0;
 
-		virtual float retScreenHeight() = 0;
+		virtual float GetScreenHeight() = 0;
 
 		virtual bool IsInitialized() = 0;
 
-		static Color retColorCode(E_DX_SYSTEM_COLORS Colors);
+		static Color GetColorCode(E_DX_SYSTEM_COLORS systemColors);
 
-		static wchar_t* retColorName(int Colors);
+		static wchar_t* GetColorName(E_DX_SYSTEM_COLORS systemColors);
 	};
 };

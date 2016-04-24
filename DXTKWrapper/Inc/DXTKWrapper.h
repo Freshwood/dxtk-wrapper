@@ -41,33 +41,33 @@ namespace DXTKWrapper
 
 		void ResetAdapters() override;
 
-		void DrawOutlinedText(wstring Text, float x, float y, Color Color, E_DX_SYSTEM_FONTS Font) override;
+		void DrawOutlinedText(wstring text, float x, float y, Color color, E_DX_SYSTEM_FONTS systemFont) override;
 
-		void DrawOutlinedTextEx(wstring Text, float x, float y, Color col, Color GlowColor, E_DX_SYSTEM_FONTS Font) override;
+		void DrawOutlinedTextEx(wstring text, float x, float y, Color col, Color glowColor, E_DX_SYSTEM_FONTS systemFont) override;
 
-		void DrawDxText(wstring Text, float x, float y, Color Color, E_DX_SYSTEM_FONTS Font) override;
+		void DrawDxText(wstring text, float x, float y, Color color, E_DX_SYSTEM_FONTS systemFont) override;
 
 		void GradientRectangle(float x, float y, float width, float height, Color startCol, Color endCol, E_DX_GRADIENT_ORIENTATION orientation) override;
 
-		void DrawBorder(float x, float y, float width, float height, Color Color) override;
+		void DrawBorder(float x, float y, float width, float height, Color color) override;
 
-		void DrawRectangle(float x, float y, float width, float height, Color RecFarbe) override;
+		void DrawRectangle(float x, float y, float width, float height, Color rectangleColor) override;
 
-		void DrawBox(float x, float y, float width, float height, Color BoxColor, Color BorderColor ) override;
+		void DrawBox(float x, float y, float width, float height, Color boxColor, Color borderColor ) override;
 
-		void DrawBoxGradient(float x, float y, float width, float height, Color BoxColor,Color EndColor, Color BorderColor,E_DX_GRADIENT_ORIENTATION orientation) override;
+		void DrawBoxGradient(float x, float y, float width, float height, Color boxColor,Color endColor, Color borderColor,E_DX_GRADIENT_ORIENTATION orientation) override;
 
-		void DrawLine(float x, float y, float x2, float y2, Color Color) override;
+		void DrawLine(float x, float y, float x2, float y2, Color color) override;
 
-		void DrawHealthBar(float X,float Y,float Health,float MaxHealth=100.0f) override;
+		void DrawHealthBar(float x, float y, float health, float maxHealth = 100.0f) override;
 
-		void DrawBoundingBox(float X,float Y,float Distance,Color Color) override;
+		void DrawBoundingBox(float x, float y, float distance, Color color) override;
 
-		void DrawCrosshair(float size = 12, Color Color = Colors::Red.v) override;
+		void DrawCrosshair(float size = 12, Color color = Colors::Red.v) override;
 
-		float retScreenWidth() override;
+		float GetScreenWidth() override;
 
-		float retScreenHeight() override;
+		float GetScreenHeight() override;
 
 		bool IsInitialized() override;
 	};	

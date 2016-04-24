@@ -70,7 +70,6 @@ namespace DXTKWrapper
 		Init = true;
 	}
 
-
 	void CDXTKWrapper::Reset()
 	{
 		if (Init)
@@ -93,15 +92,14 @@ namespace DXTKWrapper
 		Init = false;
 	}
 
-
-	void CDXTKWrapper::DrawRectangle(float x, float y, float width, float height, Color RecFarbe)
+	void CDXTKWrapper::DrawRectangle(float x, float y, float width, float height, Color rectangleColor)
 	{
 		if( pDevice == nullptr || pContext == nullptr || Init == false ) return;	
 
-		VertexPositionColor start(Vector3(x, y, 0), RecFarbe);
-		VertexPositionColor end(Vector3(x, y + height, 0), RecFarbe);
-		VertexPositionColor start2(Vector3(x + width, y + height, 0), RecFarbe);
-		VertexPositionColor end2(Vector3(x + width, y, 0), RecFarbe);
+		VertexPositionColor start(Vector3(x, y, 0), rectangleColor);
+		VertexPositionColor end(Vector3(x, y + height, 0), rectangleColor);
+		VertexPositionColor start2(Vector3(x + width, y + height, 0), rectangleColor);
+		VertexPositionColor end2(Vector3(x + width, y, 0), rectangleColor);
 
 		prepareEffect();
 		
@@ -109,7 +107,6 @@ namespace DXTKWrapper
 		primitive->DrawQuad(start, end, start2, end2);
 		primitive->End();
 	}
-
 
 	void CDXTKWrapper::DrawLine(float x, float y, float x2, float y2, Color Color)
 	{
@@ -125,59 +122,54 @@ namespace DXTKWrapper
 		primitive->End();
 	}
 
-	void CDXTKWrapper::DrawDxText(wstring Text, float x, float y, Color Color, E_DX_SYSTEM_FONTS Font)
+	void CDXTKWrapper::DrawDxText(wstring text, float x, float y, Color color, E_DX_SYSTEM_FONTS systemFont)
 	{
-		SpriteFont* font = this->retSystemFont(Font);
+		SpriteFont* font = this->retSystemFont(systemFont);
 
 		spriteBatch->Begin();
-		font->DrawString(spriteBatch.get(), Text.c_str(), XMFLOAT2(x, y), Color);
+		font->DrawString(spriteBatch.get(), text.c_str(), XMFLOAT2(x, y), color);
 		spriteBatch->End();
 	}
 
-
-	void CDXTKWrapper::DrawOutlinedText(wstring Text, float x, float y, Color Color, E_DX_SYSTEM_FONTS Font)
+	void CDXTKWrapper::DrawOutlinedText(wstring text, float x, float y, Color color, E_DX_SYSTEM_FONTS systemFont)
 	{
-		SpriteFont* font = this->retSystemFont(Font);
+		SpriteFont* font = this->retSystemFont(systemFont);
 
 		spriteBatch->Begin();
-		font->DrawString(spriteBatch.get(), Text.c_str(), XMFLOAT2(x + 1, y), Color);
-		font->DrawString(spriteBatch.get(), Text.c_str(), XMFLOAT2(x, y + 1), Color);
-		font->DrawString(spriteBatch.get(), Text.c_str(), XMFLOAT2(x - 1, y), Color);
-		font->DrawString(spriteBatch.get(), Text.c_str(), XMFLOAT2(x, y - 1), Color);
-		font->DrawString(spriteBatch.get(), Text.c_str(), XMFLOAT2(x + 1, y), Color);
+		font->DrawString(spriteBatch.get(), text.c_str(), XMFLOAT2(x + 1, y), color);
+		font->DrawString(spriteBatch.get(), text.c_str(), XMFLOAT2(x, y + 1), color);
+		font->DrawString(spriteBatch.get(), text.c_str(), XMFLOAT2(x - 1, y), color);
+		font->DrawString(spriteBatch.get(), text.c_str(), XMFLOAT2(x, y - 1), color);
+		font->DrawString(spriteBatch.get(), text.c_str(), XMFLOAT2(x + 1, y), color);
 		spriteBatch->End();
 	}
 
-
-	void CDXTKWrapper::DrawOutlinedTextEx(wstring Text, float x, float y, Color col, Color GlowColor, E_DX_SYSTEM_FONTS Font)
+	void CDXTKWrapper::DrawOutlinedTextEx(wstring text, float x, float y, Color col, Color glowColor, E_DX_SYSTEM_FONTS systemFont)
 	{
-		SpriteFont* font = this->retSystemFont(Font);
+		SpriteFont* font = this->retSystemFont(systemFont);
 
 		spriteBatch->Begin();
-		font->DrawString(spriteBatch.get(), Text.c_str(), XMFLOAT2(x + 1, y), GlowColor);
-		font->DrawString(spriteBatch.get(), Text.c_str(), XMFLOAT2(x, y + 1), GlowColor);
-		font->DrawString(spriteBatch.get(), Text.c_str(), XMFLOAT2(x - 1, y), GlowColor);
-		font->DrawString(spriteBatch.get(), Text.c_str(), XMFLOAT2(x, y - 1), GlowColor);
-		font->DrawString(spriteBatch.get(), Text.c_str(), XMFLOAT2(x + 1, y), col);
+		font->DrawString(spriteBatch.get(), text.c_str(), XMFLOAT2(x + 1, y), glowColor);
+		font->DrawString(spriteBatch.get(), text.c_str(), XMFLOAT2(x, y + 1), glowColor);
+		font->DrawString(spriteBatch.get(), text.c_str(), XMFLOAT2(x - 1, y), glowColor);
+		font->DrawString(spriteBatch.get(), text.c_str(), XMFLOAT2(x, y - 1), glowColor);
+		font->DrawString(spriteBatch.get(), text.c_str(), XMFLOAT2(x + 1, y), col);
 		spriteBatch->End();
 	}
 
-
-	void CDXTKWrapper::DrawBorder(float x, float y, float width, float height, Color Color)
+	void CDXTKWrapper::DrawBorder(float x, float y, float width, float height, Color color)
 	{
-		DrawLine(x,y,x + width,y,Color);
-		DrawLine(x,y,x,y + height,Color);
-		DrawLine(x,y + height,x + width,y + height,Color);
-		DrawLine(x + width,y + height,x + width,y,Color);
+		DrawLine(x,y,x + width,y,color);
+		DrawLine(x,y,x,y + height,color);
+		DrawLine(x,y + height,x + width,y + height,color);
+		DrawLine(x + width,y + height,x + width,y,color);
 	}
-
 
 	void CDXTKWrapper::DrawBox(float x, float y, float width, float height, Color BoxColor, Color BorderColor )
 	{
 		DrawRectangle(x,y,width,height,BoxColor);
 		DrawBorder(x,y,width,height,BorderColor);
 	}
-
 
 	void CDXTKWrapper::GradientRectangle(float x, float y, float width, float height, Color startCol, Color endCol, E_DX_GRADIENT_ORIENTATION orientation )
 	{
@@ -195,15 +187,14 @@ namespace DXTKWrapper
 		primitive->End();
 	}
 
-	void CDXTKWrapper::DrawBoxGradient(float x, float y, float width, float height, Color BoxColor, Color EndColor, Color BorderColor, E_DX_GRADIENT_ORIENTATION orientation)
+	void CDXTKWrapper::DrawBoxGradient(float x, float y, float width, float height, Color boxColor, Color endColor, Color borderColor, E_DX_GRADIENT_ORIENTATION orientation)
 	{
-		GradientRectangle(x,y,width,height,BoxColor,EndColor,orientation);
+		GradientRectangle(x,y,width,height,boxColor,endColor,orientation);
 
-		DrawBorder(x,y,width,height,BorderColor);
+		DrawBorder(x,y,width,height,borderColor);
 	}
 
-
-	void CDXTKWrapper::DrawCrosshair(float size, Color Color)
+	void CDXTKWrapper::DrawCrosshair(float size, Color color)
 	{
 		if( pDevice == nullptr || pContext == nullptr || Init == false) return;
 
@@ -216,11 +207,11 @@ namespace DXTKWrapper
 		float iCenterX = vp2.Width / 2 - size / 2;
 		float iCenterY = vp2.Height / 2 + size / 2;
 
-		DrawBox(iCenterX,iCenterY - size / 2,size,2,Color, Colors::Black.v);
-		DrawBox(iCenterX + size / 2 - 1,iCenterY - size + 1,2,size,Color, Colors::Black.v);
+		DrawBox(iCenterX,iCenterY - size / 2,size,2,color, Colors::Black.v);
+		DrawBox(iCenterX + size / 2 - 1,iCenterY - size + 1,2,size,color, Colors::Black.v);
 	}
 
-	float CDXTKWrapper::retScreenWidth()
+	float CDXTKWrapper::GetScreenWidth()
 	{
 		UINT viewPortNumber = 1;
 
@@ -228,7 +219,7 @@ namespace DXTKWrapper
 		return vp.Width;
 	}
 
-	float CDXTKWrapper::retScreenHeight()
+	float CDXTKWrapper::GetScreenHeight()
 	{
 		UINT viewPortNumber = 1;
 
@@ -241,9 +232,9 @@ namespace DXTKWrapper
 		return Init;
 	}
 
-	SpriteFont* CDXTKWrapper::retSystemFont(E_DX_SYSTEM_FONTS Font) const
+	SpriteFont* CDXTKWrapper::retSystemFont(E_DX_SYSTEM_FONTS font) const
 	{
-		switch(Font)
+		switch(font)
 		{
 		case 0:
 			return this->font12.get();
@@ -296,16 +287,16 @@ namespace DXTKWrapper
 		pContext->IASetInputLayout(inputLayout.Get());
 	}
 
-	void CDXTKWrapper::DrawHealthBar(float X, float Y, float Health, float MaxHealth)
+	void CDXTKWrapper::DrawHealthBar(float x, float y, float health, float maxHealth)
 	{
-		if(Health <= 0.0f) return;
+		if(health <= 0.0f) return;
 
 		if(this->Init == false) return;
 	
-		if(Health > MaxHealth) Health = MaxHealth;
+		if(health > maxHealth) health = maxHealth;
 	
 		    float BarLength = 50;
-			float RealWert = Health / MaxHealth;
+			float RealWert = health / maxHealth;
 			float Color = 255;
 
 			float BarRealLength = BarLength * RealWert;
@@ -314,17 +305,16 @@ namespace DXTKWrapper
 
 			SimpleMath::Color NeuColor(OtherColor, RealColor, 0, 255);
 
-			DrawBorder(X,Y,BarLength,5,Colors::Black.v);
-			DrawRectangle(X +1,Y + 1 ,BarRealLength - 1,4,NeuColor);
+			DrawBorder(x,y,BarLength,5,Colors::Black.v);
+			DrawRectangle(x +1,y + 1 ,BarRealLength - 1,4,NeuColor);
 	}
 
-
-	void CDXTKWrapper::DrawBoundingBox(float X, float Y, float Distance, Color Color)
+	void CDXTKWrapper::DrawBoundingBox(float x, float y, float distance, Color color)
 	{
 		if(this->Init == false) return;
 
-		if(Distance <= 0) return; 
+		if(distance <= 0) return; 
 
-		DrawBorder( X - 700 / Distance / 2, Y - 1200 / Distance / 2, 600 / Distance, 1200 / Distance, Color);
+		DrawBorder( x - 700 / distance / 2, y - 1200 / distance / 2, 600 / distance, 1200 / distance, color);
 	}
 };
