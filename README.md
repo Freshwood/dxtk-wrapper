@@ -2,7 +2,6 @@ The dxtk-wrapper repo
 ===================
 
 What is this repo for?
--------------
 
 #### With this c++ native **lib** you can easily use directx 11 functions.
 #### Here is a list of the current implemented functions
@@ -31,9 +30,9 @@ What is this repo for?
 
 -  DrawCrosshair
 
--  virtual float retScreenWidth
+-  retScreenWidth
 
--  virtual float retScreenHeight
+-  retScreenHeight
 
 ----------
 
