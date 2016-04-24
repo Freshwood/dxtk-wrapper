@@ -1,7 +1,7 @@
 The dxtk-wrapper repo
 ===================
 
-What is this repo for?
+## What is this repo for?
 
 #### With this c++ native **lib** you can easily use directx 11 functions.
 #### Here is a list of the current implemented functions
