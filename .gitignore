@@ -1,0 +1,10 @@
+*.user
+Compilation
+Development
+Release
+Debug
+*.suo
+packages
+*.db
+*.opendb
+*.ipch

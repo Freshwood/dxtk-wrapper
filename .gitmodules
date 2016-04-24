@@ -1,0 +1,4 @@
+[submodule "Dependency/DirectXTK"]
+	path = Dependency/DirectXTK
+	url = git@github.com:Microsoft/DirectXTK.git
+	branch = master
