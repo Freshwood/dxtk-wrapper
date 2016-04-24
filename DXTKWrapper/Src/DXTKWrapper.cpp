@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "../Inc/DXTKWrapper.h"
 
 namespace DXTKWrapper

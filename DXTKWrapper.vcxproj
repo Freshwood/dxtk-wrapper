@@ -148,7 +148,6 @@
     <ClInclude Include="DXTKWrapper\Inc\IDXTKWrapper.h" />
     <ClInclude Include="DXTKWrapper\Inc\DXTKWrapper.h" />
     <ClInclude Include="DXTKWrapper\Src\DxTypes.h" />
-    <ClInclude Include="DXTKWrapper\Src\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DXTKWrapper\Src\DXTKWrapper.cpp" />
