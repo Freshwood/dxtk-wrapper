@@ -6,33 +6,24 @@ The dxtk-wrapper repo
 #### With this c++ native **lib** you can easily use directx 11 functions.
 #### Here is a list of the current implemented functions
 
--  DrawOutlinedText
-
--  DrawOutlinedTextEx
-
--  DrawDxText
-
--  GradientRectangle
-
--  DrawBorder
-
--  DrawRectangle
-
--  DrawBox
-
--  DrawBoxGradient
-
--  DrawLine
-
--  DrawHealthBar
-
--  DrawBoundingBox
-
--  DrawCrosshair
-
--  retScreenWidth
-
--  retScreenHeight
+-  void ResetAdapters
+-  void DrawOutlinedText
+-  void DrawOutlinedTextEx
+-  void DrawDxText
+-  void GradientRectangle
+-  void DrawBorder
+-  void DrawRectangle
+-  void DrawBox
+-  void DrawBoxGradient
+-  void DrawLine
+-  void DrawHealthBar
+-  void DrawBoundingBox
+-  void DrawCrosshair
+-  float GetScreenWidth
+-  float GetScreenHeight
+-  bool IsInitialized
+-  Color GetColorCode
+-  wchar_t* GetColorName
 
 ----------
 
