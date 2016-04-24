@@ -144,15 +144,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="DXTKWrapper\DxIncludes.h" />
-    <ClInclude Include="DXTKWrapper\IDXTKWrapper.h" />
-    <ClInclude Include="DXTKWrapper\DXTKWrapper.h" />
-    <ClInclude Include="DXTKWrapper\DxTypes.h" />
-    <ClInclude Include="DXTKWrapper\stdafx.h" />
+    <ClInclude Include="DXTKWrapper\Src\DxIncludes.h" />
+    <ClInclude Include="DXTKWrapper\Inc\IDXTKWrapper.h" />
+    <ClInclude Include="DXTKWrapper\Inc\DXTKWrapper.h" />
+    <ClInclude Include="DXTKWrapper\Src\DxTypes.h" />
+    <ClInclude Include="DXTKWrapper\Src\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DXTKWrapper\DXTKWrapper.cpp" />
-    <ClCompile Include="DXTKWrapper\IDXTKWrapper.cpp" />
+    <ClCompile Include="DXTKWrapper\Src\DXTKWrapper.cpp" />
+    <ClCompile Include="DXTKWrapper\Src\IDXTKWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Dependency\DirectXTK\DirectXTK_Desktop_2015.vcxproj">

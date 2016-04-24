@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "DXTKWrapper.h"
+#include "../Inc/DXTKWrapper.h"
 
 namespace DXTKWrapper
 {

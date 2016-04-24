@@ -1,4 +1,4 @@
-#include "IDXTKWrapper.h"
+#include "../Inc/IDXTKWrapper.h"
 
 namespace DXTKWrapper
 {

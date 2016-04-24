@@ -1,7 +1,7 @@
 #pragma once
 
-#include "DxIncludes.h"
-#include "DxTypes.h"
+#include "../Src/DxIncludes.h"
+#include "../Src/DxTypes.h"
 
 namespace DXTKWrapper
 {	
