@@ -148,6 +148,7 @@
     <ClInclude Include="DXTKWrapper\Inc\IDXTKWrapper.h" />
     <ClInclude Include="DXTKWrapper\Inc\DXTKWrapper.h" />
     <ClInclude Include="DXTKWrapper\Src\DxTypes.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DXTKWrapper\Src\DXTKWrapper.cpp" />
@@ -157,6 +158,17 @@
     <ProjectReference Include="Dependency\DirectXTK\DirectXTK_Desktop_2015.vcxproj">
       <Project>{e0b52ae7-e160-4d32-bf3f-910b785e5a8e}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DXTKWrapper.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DXTKWrapper\Resources\font14.spritefont" />
+    <None Include="DXTKWrapper\Resources\font16.spritefont" />
+    <None Include="DXTKWrapper\Resources\font20.spritefont" />
+    <None Include="DXTKWrapper\Resources\fontInfo.spritefont" />
+    <None Include="DXTKWrapper\Resources\fontMessage.spritefont" />
+    <None Include="DXTKWrapper\Resources\fontText.spritefont" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

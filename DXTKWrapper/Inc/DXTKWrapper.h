@@ -25,7 +25,9 @@ namespace DXTKWrapper
 		shared_ptr<BasicEffect> basicEffect;
 		Microsoft::WRL::ComPtr<ID3D11InputLayout> inputLayout;
 
-		void prepareEffect();
+		void BuildFontFromResources();
+
+		void PrepareEffect();
 
     public:
 

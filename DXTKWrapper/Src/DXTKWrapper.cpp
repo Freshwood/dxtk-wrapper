@@ -1,4 +1,5 @@
 #include "../Inc/DXTKWrapper.h"
+#include "../../resource.h"
 
 namespace DXTKWrapper
 {
@@ -32,26 +33,8 @@ namespace DXTKWrapper
 		primitive.reset(new PrimitiveBatch<VertexPositionColor>(pContext));
 		basicEffect.reset(new BasicEffect(pDevice));
 
-		wchar_t mediaDir[1000];
-		swprintf_s(mediaDir, L"%S", "C:\\");
-
-		wstring fontLocation12(mediaDir);
-		wstring fontLocation14(mediaDir);
-		wstring fontLocation16(mediaDir);
-		wstring fontLocation20(mediaDir);
-		wstring fontLocationTitle(mediaDir);
-		wstring fontLocationText(mediaDir);
-		wstring fontLocationInfo(mediaDir);
-		wstring fontLocationMessage(mediaDir);
-
-		font12.reset(new SpriteFont(pDevice, fontLocation12.append(L"font12.spritefont").c_str()));
-		font14.reset(new SpriteFont(pDevice, fontLocation14.append(L"font14.spritefont").c_str()));
-		font16.reset(new SpriteFont(pDevice, fontLocation16.append(L"font16.spritefont").c_str()));
-		font20.reset(new SpriteFont(pDevice, fontLocation20.append(L"font20.spritefont").c_str()));
-		fontTitle.reset(new SpriteFont(pDevice, fontLocationTitle.append(L"fontTitle.spritefont").c_str()));
-		fontText.reset(new SpriteFont(pDevice, fontLocationText.append(L"fontText.spritefont").c_str()));
-		fontInfo.reset(new SpriteFont(pDevice, fontLocationInfo.append(L"fontInfo.spritefont").c_str()));
-		fontMessage.reset(new SpriteFont(pDevice, fontLocationMessage.append(L"fontMessage.spritefont").c_str()));
+		// TODO: Refactor resource loading
+		BuildFontFromResources();
 
 		D3D11_BUFFER_DESC bufferDesc;
 
@@ -101,7 +84,7 @@ namespace DXTKWrapper
 		VertexPositionColor start2(Vector3(x + width, y + height, 0), rectangleColor);
 		VertexPositionColor end2(Vector3(x + width, y, 0), rectangleColor);
 
-		prepareEffect();
+		PrepareEffect();
 		
 		primitive->Begin();
 		primitive->DrawQuad(start, end, start2, end2);
@@ -115,7 +98,7 @@ namespace DXTKWrapper
 		VertexPositionColor start(Vector3(x, y, 0), Color);
 		VertexPositionColor end(Vector3(x2, y2, 0), Color);
 
-		prepareEffect();
+		PrepareEffect();
 
 		primitive->Begin();
 		primitive->DrawLine(start, end);
@@ -180,7 +163,7 @@ namespace DXTKWrapper
 		VertexPositionColor start2(Vector3(x + width, y + height, 0), orientation == DX_ORIENTATION_FORWARD_DIAGONAL ? startCol : endCol);
 		VertexPositionColor end2(Vector3(x + width, y, 0), orientation == DX_ORIENTATION_VERTICAL ? startCol : endCol);
 
-		prepareEffect();
+		PrepareEffect();
 
 		primitive->Begin();
 		primitive->DrawQuad(start, end, start2, end2);
@@ -257,7 +240,37 @@ namespace DXTKWrapper
 		}
 	}
 
-	void CDXTKWrapper::prepareEffect()
+	void CDXTKWrapper::BuildFontFromResources()
+	{
+		auto font12Resource = FindResource(nullptr, MAKEINTRESOURCE(IDR_FONT121), "font12");
+		auto font14Resource = FindResource(nullptr, MAKEINTRESOURCE(IDR_FONT141), "font14");
+		auto font16Resource = FindResource(nullptr, MAKEINTRESOURCE(IDR_FONT161), "font16");
+		auto font20Resource = FindResource(nullptr, MAKEINTRESOURCE(IDR_FONT201), "font20");
+		auto fontTitleResource = FindResource(nullptr, MAKEINTRESOURCE(IDR_FONTINFO1), "fontTitle");
+		auto fontTextResource = FindResource(nullptr, MAKEINTRESOURCE(IDR_FONTMESSAGE1), "fontText");
+		auto fontInfoResource = FindResource(nullptr, MAKEINTRESOURCE(IDR_FONTTEXT1), "fontInfo");
+		auto fontMessageResource = FindResource(nullptr, MAKEINTRESOURCE(IDR_FONTTITLE1), "fontMessage");
+
+		const unsigned char* font12ResourceData = static_cast<unsigned char*>(LockResource(LoadResource(nullptr, font12Resource)));
+		const unsigned char* font14ResourceData = static_cast<unsigned char*>(LockResource(LoadResource(nullptr, font14Resource)));
+		const unsigned char* font16ResourceData = static_cast<unsigned char*>(LockResource(LoadResource(nullptr, font16Resource)));
+		const unsigned char* font20ResourceData = static_cast<unsigned char*>(LockResource(LoadResource(nullptr, font20Resource)));
+		const unsigned char* fontTitleResourceData = static_cast<unsigned char*>(LockResource(LoadResource(nullptr, fontTitleResource)));
+		const unsigned char* fontTextResourceData = static_cast<unsigned char*>(LockResource(LoadResource(nullptr, fontTextResource)));
+		const unsigned char* fontInfoResourceData = static_cast<unsigned char*>(LockResource(LoadResource(nullptr, fontInfoResource)));
+		const unsigned char* fontMessageResourceData = static_cast<unsigned char*>(LockResource(LoadResource(nullptr, fontMessageResource)));
+
+		font12.reset(new SpriteFont(pDevice, font12ResourceData, SizeofResource(nullptr, font12Resource)));
+		font14.reset(new SpriteFont(pDevice, font14ResourceData, SizeofResource(nullptr, font14Resource)));
+		font16.reset(new SpriteFont(pDevice, font16ResourceData, SizeofResource(nullptr, font16Resource)));
+		font20.reset(new SpriteFont(pDevice, font20ResourceData, SizeofResource(nullptr, font20Resource)));
+		fontTitle.reset(new SpriteFont(pDevice, fontTitleResourceData, SizeofResource(nullptr, fontTitleResource)));
+		fontText.reset(new SpriteFont(pDevice, fontTextResourceData, SizeofResource(nullptr, fontTextResource)));
+		fontInfo.reset(new SpriteFont(pDevice, fontInfoResourceData, SizeofResource(nullptr, fontInfoResource)));
+		fontMessage.reset(new SpriteFont(pDevice, fontMessageResourceData, SizeofResource(nullptr, fontMessageResource)));
+	}
+
+	void CDXTKWrapper::PrepareEffect()
 	{
 		D3D11_VIEWPORT vp2;
 
